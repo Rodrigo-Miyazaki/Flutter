@@ -1,49 +1,27 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cookbook/app/home/components/card_home/card_home/card_home_widget.dart';
 import 'package:cookbook/app/home/components/card_home/card_home_text/card_home_text_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 
-class HomePage extends StatefulWidget {
+class InitialPage extends StatefulWidget {
   final String title;
-
-  const HomePage({Key key, this.title = "Home"}) : super(key: key);
+  const InitialPage({Key key, this.title = "Initial"}) : super(key: key);
 
   @override
-  _HomePageState createState() => _HomePageState();
+  _InitialPageState createState() => _InitialPageState();
 }
 
-class _HomePageState extends State<HomePage> {
-  int _selectedIndex = 0;
+class _InitialPageState extends State<InitialPage> {
   TextEditingController _filter = new TextEditingController();
   List names = new List();
   List filteredNames = new List(); // names filtered by search text
   Icon _searchIcon = new Icon(Icons.search);
-  Widget _appBarTitle = new Text('Home');
+  Widget _appBarTitle = new Text('Initial');
   @override
   Widget build(BuildContext context) {
     // var screenSize = MediaQuery.of(context).size;
     return Scaffold(
         backgroundColor: Color(0xFFFFFCE6),
-        bottomNavigationBar: BottomNavigationBar(
-          backgroundColor: Colors.white,
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              title: Text('Home'),
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.favorite),
-              title: Text('Favoritos'),
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.settings),
-              title: Text('Configurações'),
-            ),
-          ],
-          currentIndex: _selectedIndex,
-          selectedItemColor: Colors.red[800],
-          onTap: _onItemTapped,
-        ),
         appBar: _buildBar(context),
         body: SingleChildScrollView(
           child: Column(
@@ -54,7 +32,7 @@ class _HomePageState extends State<HomePage> {
                     children: <Widget>[
                       CarouselSlider(
                         enlargeCenterPage: true,
-                        aspectRatio: 24 / 23,
+                        aspectRatio: 29 / 25,
                         enableInfiniteScroll: false,
                         items: [
                           CardHomeTextWidget(
@@ -62,7 +40,7 @@ class _HomePageState extends State<HomePage> {
                               'Milkshake',
                               textAlign: TextAlign.left,
                               style: TextStyle(
-                                  fontSize: 24.0,
+                                  fontSize: 16.0,
                                   fontWeight: FontWeight.bold,
                                   color: Colors.orange),
                             ),
@@ -74,7 +52,7 @@ class _HomePageState extends State<HomePage> {
                               'Frango',
                               textAlign: TextAlign.left,
                               style: TextStyle(
-                                  fontSize: 24.0,
+                                  fontSize: 16.0,
                                   fontWeight: FontWeight.bold,
                                   color: Colors.orange),
                             ),
@@ -86,7 +64,7 @@ class _HomePageState extends State<HomePage> {
                               'Pão de queijo',
                               textAlign: TextAlign.left,
                               style: TextStyle(
-                                  fontSize: 24.0,
+                                  fontSize: 16.0,
                                   fontWeight: FontWeight.bold,
                                   color: Colors.orange),
                             ),
@@ -149,12 +127,6 @@ class _HomePageState extends State<HomePage> {
         ));
   }
 
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
-
   void _searchPressed() {
     setState(() {
       if (this._searchIcon.icon == Icons.search) {
@@ -175,8 +147,6 @@ class _HomePageState extends State<HomePage> {
 
   Widget _buildBar(BuildContext context) {
     return new AppBar(
-      shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(10.0))),
       backgroundColor: Colors.red,
       centerTitle: true,
       title: _appBarTitle,
