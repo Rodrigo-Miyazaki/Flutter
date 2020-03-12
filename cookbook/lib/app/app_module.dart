@@ -1,3 +1,4 @@
+import 'package:cookbook/app/favourite/components/card_list/bloc/card_list_bloc.dart';
 import 'package:cookbook/app/help/bloc/help_bloc.dart';
 import 'package:cookbook/app/security/bloc/security_bloc.dart';
 import 'package:cookbook/app/notifications/bloc/notifications_bloc.dart';
@@ -22,6 +23,7 @@ import 'modules/initial/home_module.dart';
 class AppModule extends MainModule {
   @override
   List<Bind> get binds => [
+        Bind((i) => CardListBloc()),
         Bind((i) => HelpBloc()),
         Bind((i) => SecurityBloc()),
         Bind((i) => NotificationsBloc()),

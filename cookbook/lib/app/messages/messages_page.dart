@@ -9,15 +9,22 @@ class MessagesPage extends StatefulWidget {
 }
 
 class _MessagesPageState extends State<MessagesPage> {
+  Widget _appBarTitle = new Text("Mensagens");
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
+      appBar: _buildBar(context),
       body: Column(
         children: <Widget>[],
       ),
+    );
+  }
+
+  Widget _buildBar(BuildContext context) {
+    return new AppBar(
+      backgroundColor: Colors.red,
+      centerTitle: true,
+      title: _appBarTitle,
     );
   }
 }
